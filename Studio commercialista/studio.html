@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <meta name="author" content="Commerciarlista">
+    <title>Appuntamento studio commercialista</title>
+
+
+
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            Appuntamenti
+          </a>
+        </div>
+    </nav>
+    <!--inizio form-->
+    <div class="container mt-5">
+    
+        <h1>Studio Commercialista</h1>
+        <p><em>I conti li facciamo noi</em></p>
+    </div>
+
+    <div class="container mt-5">
+ <form id="appuntamenti">
+ <div class="form-group">
+    <label for="sceltaCommercialista">Scegli il tuo commercialista</label> 
+<select class="form-control" id="sceltaCommercialista">
+      <option value="opzione1">Giuseppe Verdi</option>
+      <option value="opzione2">Franco Gioia</option>
+      <option value="opzione3">Andrea Spinello</option>
+      <option value="opzione4">tizio a caso</option>
+</select>
+</div>      
+<div class="form-group">
+        <label for="data">Data e Ora</label>
+        <input type="datetime-local" id="data" class="form-control" required>
+</div>  
+
+<div class="form-group">
+    <label for="cliente">Inserisce il tuo nome:</label>
+<input type="text" class="form-control" id="cliente">
+</div>
+        
+   
+<div class="form-group">
+    <label for="note">inserisci note</label>
+    <textarea id="note" class="form-control"></textarea>
+</div>
+    <button type="button" class="btn btn-primary" onclick="AggiungiAppuntamenti()">Preonata Appuntamento</button>
+
+</form>
+</div>
+
+<h2>Dati inseriti</h2>
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>commercialista</th>
+                    <th>data e ora</th>
+                    <th>Motivazione</th>
+                </tr>
+            </thead>
+            <tbody id="tabella">
+
+            </tbody>
+        </table>
+
+
+<script>
+    function AggiungiAppuntamenti() {
+    var nome = document.getElementById("cliente").value;
+    var commercialista = document.getElementById("sceltaCommercialista").value;
+    var dataOra = document.getElementById("data").value;
+    var motivazione = document.getElementById("note").value;
+
+    if (nome === "" || commercialista === "" || dataOra === "" || motivazione === "") {
+        alert ("compila tutti i campi");
+        return false;
+    }
+
+    var riga = document.createElement("tr");
+
+    var colonnaNome = document.createElement("td");
+    var colonnaCommercialista = document.createElement("td");
+    var colonnaDataOra = document.createElement("td");
+    var colonnaMotivazione = document.createElement("td");
+
+    colonnaNome.innerText = nome;
+    colonnaDataOra.innerText = dataOra;
+    colonnaCommercialista.innerText = commercialista;
+    colonnaMotivazione.innerText = motivazione;
+
+    riga.appendChild(colonnaNome);
+    riga.appendChild(colonnaDataOra);
+    riga.appendChild(colonnaCommercialista);
+    riga.appendChild(colonnaMotivazione);
+
+    var tabella = document.getElementById("tabella");
+    tabella.appendChild(riga);
+
+    document.getElementById("cliente").value = "";
+    document.getElementById("data").value = "";
+    document.getElementById("sceltaCommercialista").value = "";
+    document.getElementById("note").value = "";
+
+    
+    }
+</script>
+</body>
+</html>
